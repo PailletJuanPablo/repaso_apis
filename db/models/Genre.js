@@ -1,4 +1,3 @@
-"use strict";
 module.exports = (sequelize, DataTypes) => {
     const Genre = sequelize.define(
         "Genre",
@@ -7,6 +6,10 @@ module.exports = (sequelize, DataTypes) => {
         },
         {}
     );
-  ;
+
+    Genre.associate = function(models) {
+        Genre.hasMany(models.Movie, {as: 'movies'});
+    }
+  
     return Genre;
 };

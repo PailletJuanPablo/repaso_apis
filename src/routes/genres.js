@@ -1,9 +1,10 @@
 var express = require('express');
 var router = express.Router();
-const models = require('../../db/models')
+const genreController = require('../controllers/genre');
 
-router.get('/', async (req, res) => {
-    const movies = await models.Movie.findAll();
-    return res.json(movies)
-})
+router.get('/', genreController.listAll)
+router.get('/:id', genreController.findOne)
+router.delete('/:id', genreController.destroyOne)
+
+
 module.exports = router;

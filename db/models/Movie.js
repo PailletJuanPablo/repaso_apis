@@ -12,6 +12,14 @@ module.exports = (sequelize, DataTypes) => {
         },
         {}
     );
+
+    Movie.associate = function(models) {
+        Movie.belongsTo(models.Genre, {foreignKey: 'genreId', as: 'genre'});
+        Movie.belongsToMany(models.Actor, {through: models.ActorMovie, as: 'actors'})
+           
+    }
+
+
  
     return Movie;
 };

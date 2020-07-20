@@ -9,8 +9,10 @@ module.exports = (sequelize, DataTypes) => {
         },
         {}
     );
+
     Actor.associate = function (models) {
-     
+     Actor.belongsToMany(models.Movie, {through: models.ActorMovie, as: 'movies'})
     };
+
     return Actor;
 };
