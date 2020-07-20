@@ -6,7 +6,6 @@ var logger = require('morgan');
 const bodyParser = require('body-parser');
 global.__basedir = __dirname;
 
-const genresRouter = require('./src/routes/genres');
 var app = express();
 app.use(bodyParser.json());
 
@@ -21,7 +20,6 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 
-app.use('/api/genres', genresRouter)
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));
